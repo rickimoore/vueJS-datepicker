@@ -1,0 +1,109 @@
+@import "../mixins/flexbox";
+@import "../mixins/mixins";
+
+$grey: #F8F8F8;
+
+.date-picker{
+  @include flex();
+  @include flex-column();
+  width: 400px;
+  border: 1px solid grey;
+}
+.picker--block{
+  @include cover();
+}
+.picker--header{
+  height: 100px;
+  @include flex();
+  @include flex-row(nowrap);
+  justify-content: space-around;
+  align-items: center;
+  .header--reading{
+    width: 60%;
+    .reading--date{
+      width: 100%;
+      @include flex();
+      @include flex-column();
+      .date{
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+    .reading--date-range{
+      width: 100%;
+      @include flex();
+      @include flex-row(nowrap);
+      justify-content: space-around;
+      align-items: center;
+      .range{
+        @include flex();
+        @include flex-column();
+        text-align: center;
+      }
+    }
+  }
+}
+
+.active--day{
+  background: darken($grey, 10%);
+}
+
+.date--day{
+  font-size: 14px!important;
+}
+
+.picker--grid {
+  width: 100%;
+  .date--group, .grid--week{
+    width: 100%;
+    @include flex();
+    @include flex-row(wrap);
+  }
+
+  .grid--dates{
+    width: 100%;
+    overflow: hidden;
+    .transition-next{
+      @include transition(1s);
+    }
+    .group--container{
+      @include flex();
+      @include flex-row(nowrap);
+      @include transform(translateX(-100%));
+      .date--group{
+        flex-shrink: 0;
+        .grey-date{
+          background: $grey;
+        }
+        .date--block{
+          height: 50px;
+          width: (100% / 7);
+          @include flex();
+          justify-content: center;
+          align-items: center;
+        }
+        .date--block:hover{
+          cursor: pointer;
+          background: darken($grey, 10%);
+        }
+      ;
+      }
+    }
+    .container--prev{
+      @include transform(translateX(0%)!important);
+    }
+    .container--next{
+      @include transform(translateX(-200%)!important);
+    }
+  }
+  .grid--week{
+    .day{
+      height:45px;
+      @include flex();
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: (100% / 7);
+    }
+  }
+}

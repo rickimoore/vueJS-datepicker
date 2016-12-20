@@ -1,0 +1,40 @@
+//transition mixins
+
+@mixin transition($time){
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+  -ms-transition: all $time ease;
+  -o-transition: all $time ease;
+  transition: all $time ease;
+}
+
+//transformation mixins
+
+@mixin transform($change){
+  -webkit-transform: $change;
+  -moz-transform: $change;
+  -ms-transform: $change;
+  -o-transform: $change;
+  transform: $change;
+}
+
+//container size mixins
+@mixin fullscreen(){
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+@mixin fixscreen(){
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+@mixin cover(){
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
